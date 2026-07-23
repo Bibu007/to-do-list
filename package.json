@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "To-Do-List project from The Odin Project. I've used my knowledge of SOLID principles, npm, webpack, json etc. to build this project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bibu007/to-do-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Bibu007/to-do-list/issues"
+  },
+  "homepage": "https://github.com/Bibu007/to-do-list#readme",
+  "dependencies": {
+    "webpack": "^5.108.4"
+  }
+}
