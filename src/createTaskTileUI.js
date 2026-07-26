@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { differenceInCalendarDays } from 'date-fns';
+import deleteicon from "./images/delete_icon.svg"
 
 export function createTaskTile(taskId, titleInput, descInput, dateInput){
     let task = document.createElement("div");
@@ -24,6 +25,12 @@ export function createTaskTile(taskId, titleInput, descInput, dateInput){
     dueDate.classList.add("dueDate");
     dueDate.textContent = `${relativeTime}`;
     task.appendChild(dueDate);
+    const remove = document.createElement("button");
+    const image = document.createElement("img");
+    image.src = deleteicon;
+    remove.id = "remove-btn";
+    remove.appendChild(image)
+    task.appendChild(remove);
     task.dataset.taskId = taskId;
 
     return task;

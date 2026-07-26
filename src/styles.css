@@ -307,3 +307,21 @@ input{
     margin-top: 200px;
 }
 
+#remove-btn{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background-color: inherit;
+    border: none;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    display: block;
+}
+
+#remove-btn:hover{
+    transform: scale(1.2);
+}

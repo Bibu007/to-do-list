@@ -1,7 +1,7 @@
 import { Task } from "./task.js";
 import { updateTasksStorage } from "./storageService.js";
 import { addtoList, deleteFromList } from "./listManager.js";
-import { allTaskCount } from "./selectionManager.js";
+import { allTaskCount, allTasks } from "./selectionManager.js";
 import PubSub from "pubsub-js";
 
 
@@ -33,13 +33,14 @@ export function createTask(taskMap, title, desc, date, list){
 };
 
 export function deleteTask(taskId){
+    let taskMap = exportTaskMap();
     if(taskId in taskMap){
         deleteFromList(taskId, taskMap[taskId].list);
         delete taskMap[taskId];
         updateTasksStorage(taskMap);
-        let count = allTaskCount();
-        console.log(`count: ${count}`);
-        PubSub.publish('UPDATE',count);
+        //let count = allTaskCount();
+        //console.log(`count: ${count}`);
+        PubSub.publish('UPDATE','Hello');
     }
 }
 
@@ -51,7 +52,7 @@ export function editTask(taskId, title, desc, date){
 }
 
 export function toggleStatus(taskId){
-    console.log(taskId);
+    let taskMap = exportTaskMap();
     if(taskMap[taskId].isComplete){
         taskMap[taskId].isComplete = false;
     }

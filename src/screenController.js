@@ -2,15 +2,23 @@ import { allTaskCount, todayTaskCount, completedTaskCount, allTasks, todaysTasks
 import { populateTaskMap, createTask, toggleStatus } from "./taskManager.js";
 import PubSub from "pubsub-js";
 import { formatDistanceToNow } from 'date-fns';
-import { allBtnAction, updateAllCount, updateCompletedCount, updateSelection, updateTodayCount, todayBtnAction} from "./selectionUI.js";
+import { allBtnAction, updateAllCount, updateCompletedCount, updateSelection, updateTodayCount, todayBtnAction, completedBtnAction, removeTask} from "./selectionUI.js";
 import { displayTasks } from "./displayTasksUI.js"
 import { formUI } from "./formUI.js";
 
-let state = 0; 
+let selection = 0; 
+
+export function getSelection(){
+    return selection;
+}
+
+export function setSelection(select){
+    selection = select;
+}
 
 export function initUI(){
 
-    let selection = 0;
+    let selection = getSelection();
 
     let taskMap = populateTaskMap();
 
@@ -23,6 +31,7 @@ export function initUI(){
         displayTasks(selection);
     }
 
+    
     const addTaskBtn = document.querySelector("#add-task-btn");
     addTaskBtn.addEventListener("click", formUI());
 
@@ -31,6 +40,37 @@ export function initUI(){
 
     let todayBtn = document.querySelector("#today");
     todayBtn.addEventListener('click', todayBtnAction);
+
+    let completedBtn = document.querySelector("#completed");
+    completedBtn.addEventListener('click', completedBtnAction);
+
+    // ------------ task click --------------
+
+    const taskContainer = document.querySelector('.task-container');
+
+    taskContainer.addEventListener('click', (event) => {
+    // Finds the nearest .task element relative to what was clicked
+    const taskElement = event.target.closest('.task');
+
+    // Check if a .task element (or something inside it) was clicked
+    if (taskElement && taskContainer.contains(taskElement)) {
+    // Get the data-task-id value
+    const taskId = taskElement.dataset.taskId;
+    
+    const removeBtn = document.querySelector("#remove-btn");
+    removeBtn.addEventListener('click', (event) => {removeTask(getSelection(), event.target.parentElement.dataset.taskId);
+        return;
+    });
+
+    console.log('Clicked Task ID:', taskId);
+    toggleStatus(taskId);
+    //toggleStatus(taskId);
+    console.log(`selection: ${getSelection()}`);
+    updateSelection(getSelection())
+    displayTasks(getSelection());
+  }
+});
+
     
     PubSub.subscribe('UPDATE', changeAll);
     function changeAll(msg,data){

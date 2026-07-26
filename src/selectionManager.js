@@ -10,7 +10,6 @@ export function todaysTasks(){
     for(const t in taskMap){
         //console.log(taskMap[t]);
         if(isToday(taskMap[t].dueDate)){
-            console.log("Hey");
             todayMap[taskMap[t].id] = taskMap[t];
         }
     }
@@ -42,6 +41,7 @@ export function allTaskCount(){
     let count = 0;
 
     for(let i in taskMap){
+        if(taskMap[i].isComplete === true){continue;}
         count++;
     }
     

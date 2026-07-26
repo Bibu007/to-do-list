@@ -21,6 +21,7 @@ export function displayTasks(state){
         let taskMap = todaysTasks();
 
         for(const c in taskMap){
+            //if(taskMap[c].isComplete === true){continue;}
             let tile = createTaskTile(c, taskMap[c].title, taskMap[c].desc, taskMap[c].dueDate);
             if(taskMap[c].isComplete === true){tile.classList.add("completed");}
             taskContainer.prepend(tile);
