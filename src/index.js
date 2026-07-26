@@ -2,14 +2,26 @@ import "./styles.css";
 import { createList, deleteList, editList, displayList } from "./listManager.js";
 import { createTask, deleteTask, editTask, toggleStatus} from "./taskManager.js";
 import { todaysTasks, completedTasks, allTasks } from "./selectionManager.js";
+import { initUI } from "./screenController.js";
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("App initializing...");
+
+    // Initialize business/data logic
+    //initTaskManager();
+
+    // Initialize UI listeners and subscriptions
+    initUI();
+});
 
 let p = createList("Default");
 let q = createList("Shopping");
 let s = createList("Study")
 
+/*
 let t = createTask("Buy Grocery", "None", new Date(), p.name);
-toggleStatus(t.id);
+//toggleStatus(t.id);
 let r = createTask("Do laundry", "None", new Date(), p.name);
 createTask("Buy towel", "None", new Date('2026-07-24'), q.name);
 createTask("Buy socks", "None", new Date('2026-07-25'), q.name);
@@ -32,6 +44,17 @@ console.log(todaysTasks());
 console.log(allTasks());
 console.log(completedTasks());
 
+let taskDialog = document.querySelector(".add-task-dialog");
+let addTaskBtn = document.querySelector("#add-task-btn");
+addTaskBtn.addEventListener("click", () => {taskDialog.showModal()})
+
+createTask("Buy pencils", "None", new Date('2026-07-24'), q.name);
+createTask("Buy pencils", "None", new Date('2026-07-24'), q.name);
+createTask("Buy pencils", "None", new Date('2026-07-24'), q.name);
+createTask("Buy pencils", "None", new Date('2026-07-24'), q.name);
+//removeTask(t.id);
+
+*/
 
 
 

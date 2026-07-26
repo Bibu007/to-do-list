@@ -1,15 +1,34 @@
 import { Task } from "./task.js";
 import { updateTasksStorage } from "./storageService.js";
 import { addtoList, deleteFromList } from "./listManager.js";
+import { allTaskCount } from "./selectionManager.js";
+import PubSub from "pubsub-js";
 
-let taskMap = {};
 
-export function createTask(title, desc, date, list){
+
+export function populateTaskMap(){  
+    let taskMap = {};
+    if(localStorage.getItem("tasks")){
+        let temp = (JSON.parse(localStorage.getItem("tasks")));
+        taskMap = temp;
+    }
+    else{
+        localStorage.setItem("tasks", JSON.stringify(taskMap));
+        console.log("Local Storage empty");
+    }
+
+    return taskMap;
+}
+
+export function createTask(taskMap, title, desc, date, list){
     let t = new Task(title, desc, date, list);
     taskMap[t.id] = t;
     updateTasksStorage(taskMap);
     addtoList(t.id, list);
     //console.log(JSON.stringify(taskMap));
+    let count = allTaskCount();
+    //console.log(`count: ${count}`);
+    
     return t;
 };
 
@@ -18,6 +37,9 @@ export function deleteTask(taskId){
         deleteFromList(taskId, taskMap[taskId].list);
         delete taskMap[taskId];
         updateTasksStorage(taskMap);
+        let count = allTaskCount();
+        console.log(`count: ${count}`);
+        PubSub.publish('UPDATE',count);
     }
 }
 
@@ -29,6 +51,7 @@ export function editTask(taskId, title, desc, date){
 }
 
 export function toggleStatus(taskId){
+    console.log(taskId);
     if(taskMap[taskId].isComplete){
         taskMap[taskId].isComplete = false;
     }
@@ -37,7 +60,9 @@ export function toggleStatus(taskId){
     }
     updateTasksStorage(taskMap);
 }
+    
 
 export function exportTaskMap(){
-    return taskMap;
+    return populateTaskMap();
 }
+

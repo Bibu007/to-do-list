@@ -1,6 +1,7 @@
 import { exportTaskMap } from "./taskManager.js";
 import { isToday } from "date-fns";
 import { exportList } from "./listManager.js";
+import PubSub from "pubsub-js";
 
 export function todaysTasks(){
     let taskMap = exportTaskMap();
@@ -36,6 +37,52 @@ export function allTasks(){
     return taskMap;
 }
 
+export function allTaskCount(){
+    let taskMap = exportTaskMap();
+    let count = 0;
+
+    for(let i in taskMap){
+        count++;
+    }
+    
+    return count;
+}
+
+export function todayTaskCount(){
+    let todayMap = todaysTasks();
+    let count = 0;
+
+    for(let i in todayMap){
+        count++;
+    }
+    
+    return count;
+}
+
+export function completedTaskCount(){
+    let completedMap = completedTasks();
+    let count = 0;
+
+    for(let i in completedMap){
+        count++;
+    }
+    
+    return count;
+}
+
 export function listTasks(listName){
     
 }
+
+var mySubscriber = function(msg,data){
+    //let all = allTaskCount();
+    console.log(`All: ${data}`);
+    //console.log(data);
+    //PubSub.publish('ALL_UPDATED', Number(all));
+    //PubSub.publish('SAMPLE', 'WTF')
+    
+}
+
+//PubSub.subscribe('ADD', mySubscriber)
+
+//PubSub.subscribe('MY TOPIC', mySubscriber);

@@ -7,27 +7,65 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oi&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oi&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="side-panel">
         <div id="ToDoList"><h1>ToDoList</h1></div>
         <div id="selection-btns-container">
-            <button id="all">All</button>
-            <button id="today">Today</button>
-            <button id="completed">Completed</button>
+            <button id="all"><div id="all-num">0</div><p>All</p></button>
+            <button id="today"><div id="today-num">0</div><p>Today</p></button>
+            <button id="completed"><div id="completed-num">0</div><h2><p>Completed</p></button>
+            <button id="scheduled"><div>0</div><p>Scheduled</pp></button>
         </div>
         <div id="myLists">
-            <div id="myLists-header">My Lists</div>
+            <div id="myLists-header">My Lists <button>+</button>
+            </div>
             <div id="myLists-container">
-                <div class="list">Shopping</div>
+                <div class="list"><img src="./images/lists_24dp_2656C9_FILL0_wght400_GRAD0_opsz24.svg" alt="">Shopping</div>
+                <div class="list"><img src="./images/lists_24dp_2656C9_FILL0_wght400_GRAD0_opsz24.svg" alt="">Study</div>
             </div>
         </div>
     </div>
     <div class="main">
-        <div class="main-header"></div>
+        <div id="btn-container">
+                <button id="add-task-btn">+ Add task</button>
+        </div>
+        <div class="main-header"><div id="selection"></div><div id="selection-num"></div></div>
         <div class="task-container">
-            <div class="task"></div>
+            <p class="emptymsg">All done! Time to sleep...</p>
         </div>
     </div>
+    <dialog class="add-task-dialog">
+                <h3>Add task</h3>
+                <form id="add-new-task" action="">
+                    <p class="form-item">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" required>
+                    </p>
+                    <p class="form-item">
+                        <label for="desc">Description</label>
+                        <input type="text" name="desc" required>
+                    </p>
+                    <p class="form-item">
+                        <label for="dueDate">Due Date</label>
+                        <input type="datetime-local" name="dueDate" required>
+                    </p>
+                    <p class="form-item">
+                        <div class="radio-grp">
+                            <input type="radio" id="read" name="read" value="read" checked>
+                            <label for="html">Read</label><br>
+                            <input type="radio" id="read" name="read" value="unread" checked>
+                            <label for="html">Unread</label><br>
+                        </div>
+                    </p>
+                </form>
+                <div class="form-btn">
+                        <button type="submit" form="add-new-task">Submit</button>
+                        <button id="close">Close</button>
+                    </div>
+            </dialog>
 </body>
 </html>

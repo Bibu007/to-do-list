@@ -1,3 +1,5 @@
+import PubSub from "pubsub-js";
+
 let temp = [];
 //localStorage.setItem("tasks", JSON.stringify(temp));
 
@@ -7,6 +9,7 @@ export function updateTasksStorage(taskMap){
     localStorage.setItem("tasks", JSON.stringify(taskMap));
     let temp = (JSON.parse(localStorage.getItem("tasks")));
     console.log(JSON.stringify(temp));
+    PubSub.publish('UPDATE','hELLO');
 }
 
 export function updateListsStorage(listMap){
@@ -16,3 +19,4 @@ export function updateListsStorage(listMap){
     let temp = (JSON.parse(localStorage.getItem("lists")));
     console.log(JSON.stringify(temp));
 }
+
