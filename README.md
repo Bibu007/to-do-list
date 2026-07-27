@@ -8,3 +8,4 @@ Things learnt:
 4. You cannot JSON.stringify a Map/set directly. You have to first convert it to array using Array.from() then stringify it.
 5. When you start working on UI, think how a first time user would use your website to identify the chain.
 6. When selecting dynamic elements use event delegation
+7. Used PubSub to update the count in ALL, TODAY and COMPLETED butttons in real time i.e. every time there's a change in the local storage.
