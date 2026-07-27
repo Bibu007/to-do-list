@@ -66,8 +66,14 @@ export function initUI(){
     toggleStatus(taskId);
     //toggleStatus(taskId);
     console.log(`selection: ${getSelection()}`);
-    updateSelection(getSelection())
-    displayTasks(getSelection());
+    updateSelection(getSelection());
+    if(taskElement.classList.contains("completed")){
+        taskElement.classList.remove("completed")
+    }
+    else{
+        taskElement.classList.add("completed");
+    }
+    //displayTasks(getSelection());
   }
 });
 
