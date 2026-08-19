@@ -4,7 +4,9 @@
   "description": "To-Do-List project from The Odin Project. I've used my knowledge of SOLID principles, npm, webpack, json etc. to build this project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,10 @@
     "webpack": "^5.108.4"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "css-loader": "^7.1.4",
+    "eslint": "^10.8.0",
+    "globals": "^17.8.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.7",
     "style-loader": "^4.0.0",

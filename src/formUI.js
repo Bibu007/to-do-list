@@ -3,6 +3,7 @@ import { createTask } from "./taskManager.js";
 import { displayTasks } from "./displayTasksUI.js";
 import { allTasks } from "./selectionManager.js";
 
+
 export function formUI(){
     let taskMap = allTasks();
     const add = document.querySelector("#add-task-btn");
@@ -10,7 +11,7 @@ export function formUI(){
     const closeBtn = document.querySelector("#close");
     
     const myForm = document.getElementById("add-new-task");
-    const formData = myForm.addEventListener('submit', (event) => {
+    myForm.addEventListener('submit', (event) => {
       event.preventDefault(); // Prevent standard page reload
     
       const formData = new FormData(myForm);

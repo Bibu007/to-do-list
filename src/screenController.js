@@ -1,7 +1,6 @@
-import { allTaskCount, todayTaskCount, completedTaskCount, allTasks, todaysTasks, completedTasks } from "./selectionManager.js";
-import { populateTaskMap, createTask, toggleStatus } from "./taskManager.js";
+import { allTaskCount, todayTaskCount, completedTaskCount } from "./selectionManager.js";
+import { populateTaskMap, toggleStatus } from "./taskManager.js";
 import PubSub from "pubsub-js";
-import { formatDistanceToNow } from 'date-fns';
 import { allBtnAction, updateAllCount, updateCompletedCount, updateSelection, updateTodayCount, todayBtnAction, completedBtnAction, removeTask} from "./selectionUI.js";
 import { displayTasks } from "./displayTasksUI.js"
 import { formUI } from "./formUI.js";
@@ -56,12 +55,13 @@ export function initUI(){
     if (taskElement && taskContainer.contains(taskElement)) {
     // Get the data-task-id value
     const taskId = taskElement.dataset.taskId;
-    
-    const removeBtn = document.querySelector("#remove-btn");
+    /*
+    const removeBtn = event.target.closest("#remove-btn");
     removeBtn.addEventListener('click', (event) => {removeTask(getSelection(), event.target.parentElement.dataset.taskId);
         return;
     });
-
+    */
+    
     console.log('Clicked Task ID:', taskId);
     toggleStatus(taskId);
     //toggleStatus(taskId);
@@ -76,6 +76,25 @@ export function initUI(){
     //displayTasks(getSelection());
   }
 });
+
+taskContainer.addEventListener('click', (event) => {
+  // Check if the clicked element (or its icon/child) is the remove button
+  const removeBtn = event.target.closest('#remove-btn');
+  console.log("remove");
+
+  if (removeBtn) {
+    // Find the parent .task element relative to the button
+    const taskElement = removeBtn.closest('.task');
+
+    if (taskElement && taskContainer.contains(taskElement)) {
+      const taskId = taskElement.dataset.taskId;
+      
+      // Call removeTask directly — no nested addEventListener needed!
+      removeTask(taskId);
+    }
+  }
+});
+
 
     
     PubSub.subscribe('UPDATE', changeAll);

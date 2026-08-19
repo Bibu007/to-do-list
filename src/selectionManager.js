@@ -1,7 +1,5 @@
 import { exportTaskMap } from "./taskManager.js";
 import { isToday } from "date-fns";
-import { exportList } from "./listManager.js";
-import PubSub from "pubsub-js";
 
 export function todaysTasks(){
     let taskMap = exportTaskMap();
@@ -69,7 +67,7 @@ export function completedTaskCount(){
     
     return count;
 }
-
+/*
 export function listTasks(listName){
     
 }
@@ -82,7 +80,7 @@ var mySubscriber = function(msg,data){
     //PubSub.publish('SAMPLE', 'WTF')
     
 }
-
+*/
 //PubSub.subscribe('ADD', mySubscriber)
 
 //PubSub.subscribe('MY TOPIC', mySubscriber);

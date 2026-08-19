@@ -1,7 +1,4 @@
 import "./styles.css";
-import { createList, deleteList, editList, displayList } from "./listManager.js";
-import { createTask, deleteTask, editTask, toggleStatus} from "./taskManager.js";
-import { todaysTasks, completedTasks, allTasks } from "./selectionManager.js";
 import { initUI } from "./screenController.js";
 
 
@@ -14,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI listeners and subscriptions
     initUI();
 });
-
+/*
 let p = createList("Default");
 let q = createList("Shopping");
 let s = createList("Study")
-
+*/
 /*
 let t = createTask("Buy Grocery", "None", new Date(), p.name);
 //toggleStatus(t.id);

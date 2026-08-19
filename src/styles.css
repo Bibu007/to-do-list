@@ -168,6 +168,7 @@ justify-content: space-between;
     display: grid;
     gap: 5px;
     padding: 5px 20px;
+    min-width: 500px;
 }
 
 .title-desc-container{

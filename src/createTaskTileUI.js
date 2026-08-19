@@ -1,4 +1,3 @@
-import { formatDistanceToNow } from "date-fns";
 import { differenceInCalendarDays } from 'date-fns';
 import deleteicon from "./images/delete_icon.svg"
 

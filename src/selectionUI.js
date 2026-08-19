@@ -7,7 +7,7 @@ import { deleteTask } from "./taskManager.js";
 export function updateSelection(selection){
     let selectionHeader = document.querySelector("#selection");
     let selectionNum = document.querySelector("#selection-num");
-
+ 
     if(selection === 0){
         selectionHeader.textContent = "All";
         selectionNum.textContent = allTaskCount();
