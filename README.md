@@ -1,12 +1,10 @@
 # 📝 To-Do List
 
 <p align="center">
-  <a href="YOUR_LIVE_DEMO_URL">
+  <a href="https://bibu007.github.io/to-do-list/">
     <img src="https://img.shields.io/badge/✓%20VISIT%20NOW-22C55E?style=for-the-badge&labelColor=14532D" alt="Visit Now" />
   </a>
 </p>
-
-## About
 
 A To-Do List application built as part of [The Odin Project](https://www.theodinproject.com/).
 
@@ -86,8 +84,6 @@ While building this project, I gained experience with:
 
 - [The Odin Project](https://www.theodinproject.com/) for the project inspiration and learning resources.
 
-# to-do-list
-To-Do-List project from The Odin Project. I've used my knowledge of SOLID principles, npm, webpack, json etc. to build this project.
 
 Self note:
 1. Set the mode to development in package.json
