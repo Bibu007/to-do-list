@@ -1,4 +1,4 @@
-# 📝 To-Do List
+# To-Do List
 
 <p align="center">
   <a href="https://bibu007.github.io/to-do-list/">
